@@ -1,1 +1,1 @@
-# Petualangan-Subh-nall-h-M-sy-All-h---PAI-Kelas-1-SD
+# Petualangan Subhnallah MasyAllah PAI.Kelas-1SD
