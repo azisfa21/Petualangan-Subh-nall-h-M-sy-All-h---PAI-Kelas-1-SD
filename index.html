@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Petualangan Subhānallāh & Māsyā Allāh - PAI Kelas 1 SD</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#00b4d8',
+                            darkblue: '#0077b6',
+                            green: '#2a9d8f',
+                            yellow: '#e9c46a',
+                            orange: '#f4a261',
+                            red: '#e76f51',
+                            purple: '#7209b7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Fredoka', 'Comic Sans MS', 'Inter', 'sans-serif'],
+                        arabic: ['Amiri', 'Traditional Arabic', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Fredoka', 'Comic Sans MS', cursive, sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+        .font-arabic { font-family: 'Amiri', serif; }
+        .bg-fantasy { background: linear-gradient(180deg, #bae6fd 0%, #e0f2fe 50%, #f0fdf4 100%); }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 4px solid #ffffff;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .btn-bounce { transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .btn-bounce:hover { transform: scale(1.05) translateY(-2px); }
+        .btn-bounce:active { transform: scale(0.95) translateY(2px); }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1deg); }
+        }
+        .animate-float { animation: floatSlow 4s ease-in-out infinite; }
+        @keyframes pulseGlow {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(234, 179, 8, 0.6)); }
+            50% { filter: drop-shadow(0 0 15px rgba(234, 179, 8, 0.9)); }
+        }
+        .animate-glow { animation: pulseGlow 2s infinite; }
+    </style>
+</head>
+<body class="bg-fantasy min-h-screen text-slate-800 flex flex-col justify-between overflow-x-hidden">
+
+    <header class="bg-white/90 backdrop-blur-md border-b-4 border-yellow-300 sticky top-0 z-40 px-4 py-2 shadow-md">
+        <div class="max-w-5xl mx-auto flex items-center justify-between">
+            <button onclick="navHome()" class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-3 py-1.5 rounded-2xl shadow border-b-4 border-emerald-700 btn-bounce text-sm">
+                <span>🏠</span>
+                <span class="hidden sm:inline">Beranda</span>
+            </button>
+
+            <!-- Status Indicator -->
+            <div class="flex items-center gap-3 bg-amber-100 border-2 border-amber-300 rounded-full px-4 py-1">
+                <div class="flex items-center gap-1 font-extrabold text-amber-600 text-sm">
+                    <span>⭐</span>
+                    <span id="headerStars">0</span>
+                </div>
+                <div class="h-4 w-0.5 bg-amber-300"></div>
+                <div class="flex items-center gap-1 font-extrabold text-purple-600 text-sm">
+                    <span>💎</span>
+                    <span id="headerGems">0</span>
+                </div>
+            </div>
+
+            <!-- Sound Controls -->
+            <button id="soundBtn" onclick="toggleAudio()" class="bg-sky-500 hover:bg-sky-600 text-white font-bold p-2 rounded-2xl shadow border-b-4 border-sky-700 btn-bounce text-sm">
+                <span id="soundIcon">🔊</span>
+            </button>
+        </div>
+    </header>
+
+    <main id="appContainer" class="flex-grow max-w-5xl w-full mx-auto p-4 md:p-6 flex flex-col justify-center">
+
+        <section id="viewHome" class="space-y-6 text-center">
+            <div class="relative inline-block animate-float my-2">
+                <div class="bg-gradient-to-r from-teal-400 via-sky-400 to-indigo-400 text-white p-6 md:p-8 rounded-3xl shadow-xl border-4 border-white max-w-2xl mx-auto">
+                    <span class="bg-yellow-400 text-amber-900 text-xs font-extrabold px-3 py-1 rounded-full uppercase shadow">BAB 3 — Akhlak Kepada Allah Swt.</span>
+                    <h1 class="text-2xl md:text-4xl font-extrabold mt-3 drop-shadow">
+                        🌈 PETUALANGAN SUBHĀNALLĀH & MĀSYĀ ALLĀH 🌟
+                    </h1>
+                    <p class="text-sky-100 text-xs md:text-sm mt-2 font-medium">
+                        “Temukan Keindahan Ciptaan Allah, Ucapkan Kalimat yang Tepat!”
+                    </p>
+                </div>
+                <div class="absolute -top-4 -right-2 text-4xl animate-bounce">👦👧</div>
+            </div>
+
+            <div class="glass-card p-4 rounded-3xl max-w-xl mx-auto flex items-center gap-4 text-left">
+                <div class="text-4xl">🎒</div>
+                <div>
+                    <h3 class="font-bold text-base text-emerald-700">Assalamu’alaikum, <span id="welcomePlayerName">Petualang Cilik</span>!</h3>
+                    <p class="text-slate-600 text-xs">Siap menjelajahi dunia fantasi Islami dan mengumpulkan bintang akhlak?</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-3xl mx-auto">
+                <button onclick="navView('map')" class="bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-500 text-white font-extrabold text-base p-4 rounded-3xl shadow border-b-8 border-teal-700 btn-bounce flex items-center justify-center gap-3">
+                    <span class="text-2xl">▶️</span>
+                    <span>MULAI PETUALANGAN</span>
+                </button>
+
+                <button onclick="navView('objectives')" class="bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 text-white font-extrabold text-base p-4 rounded-3xl shadow border-b-8 border-blue-700 btn-bounce flex items-center justify-center gap-3">
+                    <span class="text-2xl">🎯</span>
+                    <span>TUJUAN PEMBELAJARAN</span>
+                </button>
+
+                <button onclick="navView('material')" class="bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 text-white font-extrabold text-base p-4 rounded-3xl shadow border-b-8 border-orange-700 btn-bounce flex items-center justify-center gap-3">
+                    <span class="text-2xl">📚</span>
+                    <span>MATERI BELAJAR</span>
+                </button>
+
+                <button onclick="navView('map')" class="bg-gradient-to-r from-purple-400 to-indigo-500 hover:from-purple-500 text-white font-extrabold text-base p-4 rounded-3xl shadow border-b-8 border-indigo-700 btn-bounce flex items-center justify-center gap-3">
+                    <span class="text-2xl">🗺️</span>
+                    <span>PETA PETUALANGAN</span>
+                </button>
+
+                <button onclick="navView('achievements')" class="bg-gradient-to-r from-pink-400 to-rose-500 hover:from-pink-500 text-white font-extrabold text-base p-4 rounded-3xl shadow border-b-8 border-rose-700 btn-bounce flex items-center justify-center gap-3">
+                    <span class="text-2xl">🏆</span>
+                    <span>PRESTASI & LENCANA</span>
+                </button>
+
+                <button onclick="navView('teacher')" class="bg-gradient-to-r from-slate-600 to-slate-800 text-white font-extrabold text-base p-4 rounded-3xl shadow border-b-8 border-slate-900 btn-bounce flex items-center justify-center gap-3">
+                    <span class="text-2xl">👨‍🏫</span>
+                    <span>AREA GURU</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="viewObjectives" class="hidden space-y-6">
+            <div class="glass-card p-6 rounded-3xl text-center max-w-3xl mx-auto space-y-4">
+                <div class="inline-block bg-sky-100 p-3 rounded-2xl"><span class="text-4xl">🎯</span></div>
+                <h2 class="text-2xl font-extrabold text-sky-800">Tujuan Pembelajaran</h2>
+                <p class="text-xs text-slate-600 max-w-md mx-auto">Setelah mempelajari bab ini, murid-murid diharapkan mampu memahami dan membiasakan kalimat thoyyibah Subhānallāh & Māsyā Allāh!</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-left my-4">
+                    <div class="bg-emerald-50 border-2 border-emerald-200 p-3 rounded-2xl flex items-start gap-3">
+                        <span class="text-2xl">🎯</span>
+                        <div><h4 class="font-extrabold text-xs text-emerald-800">Misi 1</h4><p class="text-xs text-slate-600">Aku tahu arti Subhānallāh & Māsyā Allāh</p></div>
+                    </div>
+                    <div class="bg-sky-50 border-2 border-sky-200 p-3 rounded-2xl flex items-start gap-3">
+                        <span class="text-2xl">🎯</span>
+                        <div><h4 class="font-extrabold text-xs text-sky-800">Misi 2</h4><p class="text-xs text-slate-600">Aku tahu kapan mengucapkannya</p></div>
+                    </div>
+                    <div class="bg-amber-50 border-2 border-amber-200 p-3 rounded-2xl flex items-start gap-3">
+                        <span class="text-2xl">🎯</span>
+                        <div><h4 class="font-extrabold text-xs text-amber-800">Misi 3</h4><p class="text-xs text-slate-600">Aku terbiasa mengucapkannya sehari-hari</p></div>
+                    </div>
+                    <div class="bg-purple-50 border-2 border-purple-200 p-3 rounded-2xl flex items-start gap-3">
+                        <span class="text-2xl">🎯</span>
+                        <div><h4 class="font-extrabold text-xs text-purple-800">Misi 4</h4><p class="text-xs text-slate-600">Aku kagum, bersyukur & menjaga ciptaan Allah</p></div>
+                    </div>
+                </div>
+
+                <div class="bg-amber-100 border-2 border-amber-300 p-3 rounded-2xl flex items-center justify-between">
+                    <span class="font-bold text-amber-900 text-xs sm:text-sm">Progres Mandiri Siswa:</span>
+                    <span id="objectiveProgressText" class="font-extrabold text-amber-700 bg-white px-3 py-1 rounded-xl shadow text-xs">⭐ 0/6 Misi Selesai</span>
+                </div>
+
+                <div class="text-left bg-white p-4 rounded-2xl border-2 border-slate-200 space-y-2">
+                    <h3 class="font-extrabold text-slate-800 text-xs flex items-center gap-2">
+                        <span>📝</span> Checklist Mandiri Siswa:
+                    </h3>
+                    <label class="flex items-center gap-3 p-1.5 hover:bg-slate-50 rounded-xl cursor-pointer text-xs">
+                        <input type="checkbox" id="chk1" onchange="updateObjectiveChecklist()" class="w-4 h-4 accent-emerald-500 rounded">
+                        <span>Aku tahu arti Subhānallāh</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-1.5 hover:bg-slate-50 rounded-xl cursor-pointer text-xs">
+                        <input type="checkbox" id="chk2" onchange="updateObjectiveChecklist()" class="w-4 h-4 accent-emerald-500 rounded">
+                        <span>Aku tahu arti Māsyā Allāh</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-1.5 hover:bg-slate-50 rounded-xl cursor-pointer text-xs">
+                        <input type="checkbox" id="chk3" onchange="updateObjectiveChecklist()" class="w-4 h-4 accent-emerald-500 rounded">
+                        <span>Aku tahu kapan mengucapkannya</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-1.5 hover:bg-slate-50 rounded-xl cursor-pointer text-xs">
+                        <input type="checkbox" id="chk4" onchange="updateObjectiveChecklist()" class="w-4 h-4 accent-emerald-500 rounded">
+                        <span>Aku terbiasa mengucapkannya</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-1.5 hover:bg-slate-50 rounded-xl cursor-pointer text-xs">
+                        <input type="checkbox" id="chk5" onchange="updateObjectiveChecklist()" class="w-4 h-4 accent-emerald-500 rounded">
+                        <span>Aku menjaga ciptaan Allah Swt.</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-1.5 hover:bg-slate-50 rounded-xl cursor-pointer text-xs">
+                        <input type="checkbox" id="chk6" onchange="updateObjectiveChecklist()" class="w-4 h-4 accent-emerald-500 rounded">
+                        <span>Aku selalu ingat Allah Swt.</span>
+                    </label>
+                </div>
+
+                <div class="pt-2">
+                    <button onclick="navView('material')" class="bg-amber-400 hover:bg-amber-500 text-amber-950 font-extrabold px-6 py-3 rounded-2xl shadow border-b-4 border-amber-600 btn-bounce text-xs">
+                        LANJUT KE MATERI BELAJAR 📚
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="viewMaterial" class="hidden space-y-6">
+            <div class="glass-card p-6 rounded-3xl max-w-4xl mx-auto space-y-4">
+                <div class="flex items-center justify-between border-b-2 border-slate-100 pb-3">
+                    <h2 class="text-xl md:text-2xl font-extrabold text-emerald-700 flex items-center gap-2">
+                        <span>📚</span> Buku Belajar Interaktif
+                    </h2>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full">Kelas 1 SD</span>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="switchMaterialTab('m1')" id="tab_m1" class="tab-btn bg-emerald-500 text-white font-bold px-3 py-2 rounded-2xl text-xs btn-bounce">1. Mengenal Allah</button>
+                    <button onclick="switchMaterialTab('m2')" id="tab_m2" class="tab-btn bg-slate-200 text-slate-700 font-bold px-3 py-2 rounded-2xl text-xs btn-bounce">2. Subhānallāh</button>
+                    <button onclick="switchMaterialTab('m3')" id="tab_m3" class="tab-btn bg-slate-200 text-slate-700 font-bold px-3 py-2 rounded-2xl text-xs btn-bounce">3. Māsyā Allāh</button>
+                    <button onclick="switchMaterialTab('m4')" id="tab_m4" class="tab-btn bg-slate-200 text-slate-700 font-bold px-3 py-2 rounded-2xl text-xs btn-bounce">4. Kartu Ingat</button>
+                </div>
+
+                <!-- Tab 1 -->
+                <div id="content_m1" class="space-y-4">
+                    <div class="bg-sky-50 border-2 border-sky-200 p-4 rounded-2xl">
+                        <h3 class="text-base font-extrabold text-sky-800">🌍 Allah Swt. Pencipta Seluruh Alam</h3>
+                        <p class="text-slate-700 text-xs mt-1">Allah Swt. menciptakan segala sesuatu yang ada di bumi dan langit untuk kita semua!</p>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                        <div class="bg-white p-3 rounded-2xl border shadow-sm"><span class="text-3xl">🌎</span><p class="font-bold text-xs mt-1">Bumi</p></div>
+                        <div class="bg-white p-3 rounded-2xl border shadow-sm"><span class="text-3xl">☀️</span><p class="font-bold text-xs mt-1">Matahari</p></div>
+                        <div class="bg-white p-3 rounded-2xl border shadow-sm"><span class="text-3xl">🌙</span><p class="font-bold text-xs mt-1">Bulan</p></div>
+                        <div class="bg-white p-3 rounded-2xl border shadow-sm"><span class="text-3xl">⭐</span><p class="font-bold text-xs mt-1">Bintang</p></div>
+                        <div class="bg-white p-3 rounded-2xl border shadow-sm"><span class="text-3xl">🌈</span><p class="font-bold text-xs mt-1">Pelangi</p></div>
+                        <div class="bg-white p-3 rounded-2xl border shadow-sm"><span class="text-3xl">🌳</span><p class="font-bold text-xs mt-1">Tumbuhan</p></div>
+                        <div class="bg-white p-3 rounded-2xl border shadow-sm"><span class="text-3xl">🐦</span><p class="font-bold text-xs mt-1">Hewan</p></div>
+                        <div class="bg-white p-3 rounded-2xl border shadow-sm"><span class="text-3xl">👧</span><p class="font-bold text-xs mt-1">Manusia</p></div>
+                    </div>
+                </div>
+
+                <!-- Tab 2 -->
+                <div id="content_m2" class="hidden space-y-4">
+                    <div class="bg-gradient-to-r from-sky-400 to-teal-500 text-white p-6 rounded-3xl text-center shadow space-y-2">
+                        <h3 class="font-arabic text-4xl">سُبْحَانَ اللّٰهِ</h3>
+                        <p class="text-2xl font-black text-yellow-300">Subhānallāh</p>
+                        <p class="text-xs font-semibold">Artinya: “Mahasuci Allah”</p>
+                        <button onclick="playSpeech('Subhanallah')" class="mt-2 bg-white text-teal-800 font-extrabold px-4 py-2 rounded-full text-xs btn-bounce inline-flex items-center gap-1 shadow">
+                            <span>🔊</span> DENGARKAN
+                        </button>
+                    </div>
+                    <div class="bg-sky-50 border p-4 rounded-2xl space-y-2 text-xs">
+                        <h4 class="font-bold text-sky-900">Kapan Mengucapkannya?</h4>
+                        <p class="text-slate-600">Diucapkan ketika melihat sesuatu yang menunjukkan **kebesaran dan keagungan Allah Swt.**</p>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="bg-white px-3 py-1 rounded-full border text-slate-700">🌈 Pelangi</span>
+                            <span class="bg-white px-3 py-1 rounded-full border text-slate-700">🏔️ Gunung Tinggi</span>
+                            <span class="bg-white px-3 py-1 rounded-full border text-slate-700">🌊 Laut Luas</span>
+                            <span class="bg-white px-3 py-1 rounded-full border text-slate-700">🌌 Bintang Malam</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3 -->
+                <div id="content_m3" class="hidden space-y-4">
+                    <div class="bg-gradient-to-r from-pink-400 to-rose-500 text-white p-6 rounded-3xl text-center shadow space-y-2">
+                        <h3 class="font-arabic text-4xl">مَا شَاءَ اللّٰهُ</h3>
+                        <p class="text-2xl font-black text-yellow-300">Māsyā Allāh</p>
+                        <p class="text-xs font-semibold">Artinya: “Apa yang dikehendaki Allah”</p>
+                        <button onclick="playSpeech('Masya Allah')" class="mt-2 bg-white text-rose-800 font-extrabold px-4 py-2 rounded-full text-xs btn-bounce inline-flex items-center gap-1 shadow">
+                            <span>🔊</span> DENGARKAN
+                        </button>
+                    </div>
+                    <div class="bg-rose-50 border p-4 rounded-2xl space-y-2 text-xs">
+                        <h4 class="font-bold text-rose-900">Kapan Mengucapkannya?</h4>
+                        <p class="text-slate-600">Diucapkan ketika melihat sesuatu yang **indah, bagus, atau mengagumkan** karya/prestasi manusia.</p>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="bg-white px-3 py-1 rounded-full border text-slate-700">🌸 Bunga Mekar Indah</span>
+                            <span class="bg-white px-3 py-1 rounded-full border text-slate-700">🏆 Teman Juara</span>
+                            <span class="bg-white px-3 py-1 rounded-full border text-slate-700">🎨 Gambar Bagus</span>
+                            <span class="bg-white px-3 py-1 rounded-full border text-slate-700">🏡 Rumah Indah</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 4 -->
+                <div id="content_m4" class="hidden space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-teal-50 border-2 border-teal-300 p-4 rounded-2xl text-center space-y-2">
+                            <span class="text-3xl">🌟</span>
+                            <h4 class="font-extrabold text-teal-800 text-sm">SUBHĀNALLĀH</h4>
+                            <p class="text-xs text-teal-900 font-bold">Mahasuci Allah</p>
+                            <p class="text-xs text-slate-600">Digunakan untuk mengingat kesucian & kebesaran ciptaan Allah Swt.</p>
+                        </div>
+                        <div class="bg-rose-50 border-2 border-rose-300 p-4 rounded-2xl text-center space-y-2">
+                            <span class="text-3xl">🌸</span>
+                            <h4 class="font-extrabold text-rose-800 text-sm">MĀSYĀ ALLĀH</h4>
+                            <p class="text-xs text-rose-900 font-bold">Apa yang Dikehendaki Allah</p>
+                            <p class="text-xs text-slate-600">Digunakan ketika melihat sesuatu yang indah, baik, atau mengagumkan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex justify-between items-center pt-4 border-t">
+                    <button onclick="navView('home')" class="bg-slate-200 text-slate-700 font-bold px-4 py-2 rounded-xl text-xs btn-bounce">🏠 Beranda</button>
+                    <button onclick="navView('map')" class="bg-emerald-500 text-white font-extrabold px-5 py-2 rounded-xl shadow border-b-4 border-emerald-700 btn-bounce text-xs">🗺️ PETA PETUALANGAN</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="viewMap" class="hidden space-y-6">
+            <div class="text-center max-w-3xl mx-auto space-y-2">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-sky-800">🗺️ PETA PETUALANGAN AKHLAK</h2>
+                <p class="text-slate-600 text-xs">Pilih level permainan dan kumpulkan 3 bintang di setiap level!</p>
+            </div>
+
+            <div id="mapLevelsContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto"></div>
+
+            <div class="text-center pt-2">
+                <button onclick="startEvaluation()" class="bg-purple-600 hover:bg-purple-700 text-white font-extrabold px-6 py-3 rounded-2xl shadow-lg border-b-4 border-purple-900 btn-bounce text-sm inline-flex items-center gap-2">
+                    <span>🏆</span> UJI KEMAMPUAN (EVALUASI AKHIR)
+                </button>
+            </div>
+        </section>
+
+        <section id="viewLevel" class="hidden max-w-3xl mx-auto w-full">
+            <div class="glass-card p-4 md:p-6 rounded-3xl relative min-h-[380px] flex flex-col justify-between">
+                <div class="flex items-center justify-between border-b pb-3 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span id="levelIcon" class="text-3xl">🏡</span>
+                        <div>
+                            <h3 id="levelTitle" class="font-extrabold text-base text-slate-800">LEVEL 1</h3>
+                            <p id="levelSubtitle" class="text-xs text-emerald-600 font-bold">Misi: Kenali Pencipta Alam</p>
+                        </div>
+                    </div>
+                    <button onclick="navView('map')" class="bg-rose-100 text-rose-700 font-bold px-3 py-1 rounded-xl text-xs btn-bounce">✖️ Keluar</button>
+                </div>
+
+                <div id="gameplayArea" class="flex-grow flex flex-col justify-center items-center py-4"></div>
+            </div>
+        </section>
+
+        <section id="viewEval" class="hidden max-w-2xl mx-auto w-full">
+            <div class="glass-card p-6 rounded-3xl space-y-4">
+                <div class="flex justify-between items-center border-b pb-3">
+                    <h3 class="font-extrabold text-lg text-indigo-800">Evaluasi Akhir</h3>
+                    <span id="evalCounter" class="bg-indigo-100 text-indigo-700 font-bold px-3 py-1 rounded-full text-xs">Soal 1 / 10</span>
+                </div>
+                <div id="evalQuizBox" class="space-y-4"></div>
+            </div>
+        </section>
+
+        <section id="viewResult" class="hidden max-w-2xl mx-auto w-full">
+            <div class="bg-gradient-to-b from-amber-100 via-white to-amber-50 p-6 md:p-8 rounded-3xl border-4 border-amber-300 shadow-xl text-center space-y-4">
+                <span class="text-5xl animate-bounce inline-block">🏅</span>
+                <h2 class="text-2xl font-black text-amber-900">HASIL PETUALANGAN HEBAT!</h2>
+
+                <div class="bg-white p-3 rounded-2xl border space-y-1 max-w-md mx-auto shadow-sm">
+                    <label class="block text-xs font-bold text-slate-500">Nama Siswa:</label>
+                    <input type="text" id="playerNameInput" value="Petualang Kecil" onchange="savePlayerName(this.value)" class="w-full text-center font-black text-lg text-emerald-700 border-b-2 border-emerald-400 focus:outline-none bg-transparent">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 max-w-md mx-auto">
+                    <div class="bg-emerald-50 p-3 rounded-2xl border border-emerald-200"><p class="text-xs text-slate-500 font-bold">Skor Evaluasi:</p><p id="resScore" class="text-2xl font-black text-emerald-600">100 / 100</p></div>
+                    <div class="bg-amber-50 p-3 rounded-2xl border border-amber-200"><p class="text-xs text-slate-500 font-bold">Total Bintang:</p><p id="resStars" class="text-xl font-black text-amber-500">⭐ 21</p></div>
+                </div>
+
+                <div class="p-4 bg-yellow-50 rounded-2xl border border-yellow-200 text-xs text-amber-900 max-w-md mx-auto">
+                    <p class="font-bold">« Māsyā Allāh! Kamu sudah belajar mengenal Subhānallāh dan Māsyā Allāh. Teruslah bersyukur, menjaga ciptaan Allah, dan selalu mengingat Allah Swt.! »</p>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-2 pt-2">
+                    <button onclick="navView('map')" class="bg-emerald-500 text-white font-extrabold px-4 py-2 rounded-xl shadow border-b-4 border-emerald-700 btn-bounce text-xs">🔄 MAIN LAGI</button>
+                    <button onclick="window.print()" class="bg-sky-500 text-white font-extrabold px-4 py-2 rounded-xl shadow border-b-4 border-sky-700 btn-bounce text-xs">🖨️ CETAK HASIL</button>
+                    <button onclick="navView('achievements')" class="bg-purple-500 text-white font-extrabold px-4 py-2 rounded-xl shadow border-b-4 border-purple-700 btn-bounce text-xs">🏆 LENCANA</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="viewAchievements" class="hidden space-y-6 max-w-3xl mx-auto w-full">
+            <div class="glass-card p-6 rounded-3xl text-center space-y-4">
+                <span class="text-4xl">🏆</span>
+                <h2 class="text-2xl font-extrabold text-amber-800">Ruang Prestasi & Lencana</h2>
+                <div id="badgesContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left"></div>
+            </div>
+        </section>
+
+        <section id="viewTeacher" class="hidden max-w-3xl mx-auto w-full space-y-6">
+            <div class="glass-card p-6 rounded-3xl space-y-4">
+                <h2 class="text-xl font-extrabold text-slate-800 flex items-center gap-2"><span>👨‍🏫</span> Area Guru & Rekap Belajar</h2>
+                <div class="grid grid-cols-3 gap-3 text-center">
+                    <div class="bg-sky-50 p-3 rounded-2xl border"><p class="text-xs text-slate-500">Total Bintang:</p><p id="tStars" class="text-xl font-bold text-sky-700">0</p></div>
+                    <div class="bg-purple-50 p-3 rounded-2xl border"><p class="text-xs text-slate-500">Nilai Evaluasi:</p><p id="tEval" class="text-xl font-bold text-purple-700">- / 100</p></div>
+                    <div class="bg-emerald-50 p-3 rounded-2xl border"><p class="text-xs text-slate-500">Level Selesai:</p><p id="tLevels" class="text-xl font-bold text-emerald-700">0 / 7</p></div>
+                </div>
+
+                <div class="pt-3 border-t flex justify-between">
+                    <button onclick="openResetModal()" class="bg-rose-500 text-white font-bold px-4 py-2 rounded-xl text-xs btn-bounce">⚠️ RESET PROGRES</button>
+                    <button onclick="navHome()" class="bg-slate-200 text-slate-700 font-bold px-4 py-2 rounded-xl text-xs btn-bounce">🏠 Beranda</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="customModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white p-6 rounded-3xl max-w-sm w-full text-center space-y-4 shadow-2xl">
+            <div class="text-4xl">⚠️</div>
+            <h3 id="modalTitle" class="font-extrabold text-base text-slate-800">Konfirmasi Reset</h3>
+            <p id="modalMessage" class="text-xs text-slate-600">Apakah Anda yakin ingin menghapus seluruh progres belajar siswa?</p>
+            <div class="flex justify-center gap-2 pt-2">
+                <button onclick="closeModal()" class="bg-slate-200 text-slate-700 font-bold px-4 py-2 rounded-xl text-xs btn-bounce">Batal</button>
+                <button id="modalConfirmBtn" class="bg-rose-600 text-white font-bold px-4 py-2 rounded-xl text-xs btn-bounce">Ya, Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-white/60 backdrop-blur-sm text-center py-2 text-xs text-slate-500 border-t mt-4">
+        <p>🌈 Petualangan Subhānallāh & Māsyā Allāh • Media Pembelajaran PAI Kelas 1 SD</p>
+    </footer>
+
+    <script>
+        const DEFAULT_STATE = {
+            playerName: 'Petualang Kecil',
+            stars: 0,
+            gems: 0,
+            completedLevels: [],
+            levelStars: {},
+            checklists: {},
+            evalScore: null,
+            soundEnabled: true
+        };
+
+        let gameState = { ...DEFAULT_STATE };
+
+        function loadGameState() {
+            try {
+                const saved = localStorage.getItem('pai_petualangan_gas_v1');
+                if (saved) gameState = { ...DEFAULT_STATE, ...JSON.parse(saved) };
+            } catch (e) { console.error(e); }
+            updateHeaderUI();
+            const pInput = document.getElementById('playerNameInput');
+            if (pInput) pInput.value = gameState.playerName;
+            const wName = document.getElementById('welcomePlayerName');
+            if (wName) wName.innerText = gameState.playerName;
+        }
+
+        function saveGameState() {
+            try {
+                localStorage.setItem('pai_petualangan_gas_v1', JSON.stringify(gameState));
+            } catch (e) { console.error(e); }
+            updateHeaderUI();
+        }
+
+        function updateHeaderUI() {
+            document.getElementById('headerStars').innerText = gameState.stars;
+            document.getElementById('headerGems').innerText = gameState.gems;
+            document.getElementById('soundIcon').innerText = gameState.soundEnabled ? '🔊' : '🔇';
+        }
+
+        function savePlayerName(val) {
+            gameState.playerName = val.trim() || 'Petualang Kecil';
+            document.getElementById('welcomePlayerName').innerText = gameState.playerName;
+            saveGameState();
+        }
+
+        function navView(viewId) {
+            playSound('click');
+            const views = ['viewHome', 'viewObjectives', 'viewMaterial', 'viewMap', 'viewLevel', 'viewEval', 'viewResult', 'viewAchievements', 'viewTeacher'];
+            views.forEach(v => {
+                const el = document.getElementById(v);
+                if (el) el.classList.add('hidden');
+            });
+            const target = document.getElementById('view' + viewId.charAt(0).toUpperCase() + viewId.slice(1));
+            if (target) target.classList.remove('hidden');
+
+            if (viewId === 'map') renderMap();
+            if (viewId === 'achievements') renderAchievements();
+            if (viewId === 'teacher') renderTeacherUI();
+        }
+
+        function navHome() { navView('home'); }
+
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function toggleAudio() {
+            gameState.soundEnabled = !gameState.soundEnabled;
+            saveGameState();
+        }
+
+        function playSound(type) {
+            if (!gameState.soundEnabled) return;
+            try {
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                const now = audioCtx.currentTime;
+
+                if (type === 'click') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(400, now);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.08);
+                    osc.start(now); osc.stop(now + 0.08);
+                } else if (type === 'success') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.1);
+                    osc.frequency.setValueAtTime(783.99, now + 0.2);
+                    gain.gain.setValueAtTime(0.3, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.4);
+                    osc.start(now); osc.stop(now + 0.4);
+                } else if (type === 'rocket') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(200, now);
+                    osc.frequency.exponentialRampToValueAtTime(800, now + 0.5);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.5);
+                    osc.start(now); osc.stop(now + 0.5);
+                }
+            } catch (e) {}
+        }
+
+        function playSpeech(phrase) {
+            playSound('click');
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(phrase);
+                utterance.lang = 'id-ID';
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        function updateObjectiveChecklist() {
+            playSound('click');
+            let count = 0;
+            for (let i = 1; i <= 6; i++) {
+                const el = document.getElementById('chk' + i);
+                if (el) {
+                    gameState.checklists['chk' + i] = el.checked;
+                    if (el.checked) count++;
+                }
+            }
+            document.getElementById('objectiveProgressText').innerText = `⭐ ${count}/6 Misi Selesai`;
+            saveGameState();
+        }
+
+        function switchMaterialTab(tabId) {
+            playSound('click');
+            ['m1', 'm2', 'm3', 'm4'].forEach(t => {
+                const btn = document.getElementById('tab_' + t);
+                const content = document.getElementById('content_' + t);
+                if (t === tabId) {
+                    btn.className = 'tab-btn bg-emerald-500 text-white font-bold px-3 py-2 rounded-2xl text-xs btn-bounce';
+                    content.classList.remove('hidden');
+                } else {
+                    btn.className = 'tab-btn bg-slate-200 text-slate-700 font-bold px-3 py-2 rounded-2xl text-xs btn-bounce';
+                    content.classList.add('hidden');
+                }
+            });
+        }
+
+        const LEVELS_CONFIG = [
+            { id: 1, name: 'Desa Ceria', icon: '🏡', mission: 'Kenali Pencipta Alam' },
+            { id: 2, name: 'Hutan Keajaiban', icon: '🌳', mission: 'Temukan Subhānallāh!' },
+            { id: 3, name: 'Taman Indah', icon: '🌸', mission: 'Temukan Māsyā Allāh!' },
+            { id: 4, name: 'Hutan Pilihan', icon: '🐾', mission: 'Pilih Kalimat Tepat' },
+            { id: 5, name: 'Laut Keajaiban', icon: '🌊', mission: 'Pulau Kalimat' },
+            { id: 6, name: 'Roket Akhlak', icon: '🚀', mission: 'Luncurkan Roket' },
+            { id: 7, name: 'Kastil Akhlak', icon: '🏰', mission: 'Lawan Monster Lupa!' }
+        ];
+
+        function renderMap() {
+            const container = document.getElementById('mapLevelsContainer');
+            container.innerHTML = '';
+            LEVELS_CONFIG.forEach((lvl, idx) => {
+                const isUnlocked = idx === 0 || gameState.completedLevels.includes(lvl.id - 1);
+                const starsCount = gameState.levelStars[lvl.id] || 0;
+                const starDisplay = isUnlocked ? '⭐'.repeat(starsCount) + '☆'.repeat(3 - starsCount) : '🔒 Terkunci';
+
+                const card = document.createElement('div');
+                card.className = `p-4 rounded-3xl border-4 text-center space-y-1 transition-all ${
+                    isUnlocked ? 'bg-white border-teal-300 shadow cursor-pointer hover:shadow-lg btn-bounce' : 'bg-slate-100 border-slate-300 opacity-60 cursor-not-allowed'
+                }`;
+                card.innerHTML = `
+                    <div class="text-3xl">${lvl.icon}</div>
+                    <h3 class="font-extrabold text-xs">LEVEL ${lvl.id}</h3>
+                    <p class="font-bold text-xs text-teal-700">${lvl.name}</p>
+                    <div class="text-xs text-amber-600 bg-amber-50 rounded-full py-0.5 border border-amber-200 font-bold">${starDisplay}</div>
+                `;
+                if (isUnlocked) card.onclick = () => startLevel(lvl.id);
+                container.appendChild(card);
+            });
+        }
+
+        function startLevel(levelId) {
+            playSound('click');
+            navView('level');
+            const lvlData = LEVELS_CONFIG.find(l => l.id === levelId);
+            document.getElementById('levelIcon').innerText = lvlData.icon;
+            document.getElementById('levelTitle').innerText = `LEVEL ${lvlData.id} — ${lvlData.name.toUpperCase()}`;
+            document.getElementById('levelSubtitle').innerText = `Misi: ${lvlData.mission}`;
+
+            const gameArea = document.getElementById('gameplayArea');
+            gameArea.innerHTML = '';
+
+            if (levelId === 1) playLevel1(gameArea);
+            else if (levelId === 2) playLevel2(gameArea);
+            else if (levelId === 3) playLevel3(gameArea);
+            else if (levelId === 4) playLevel4(gameArea);
+            else if (levelId === 5) playLevel5(gameArea);
+            else if (levelId === 6) playLevel6(gameArea);
+            else if (levelId === 7) playLevel7(gameArea);
+        }
+
+        function playLevel1(container) {
+            let found = new Set();
+            const items = [
+                { id: 'tree', icon: '🌳', name: 'Pohon' },
+                { id: 'flower', icon: '🌸', name: 'Bunga' },
+                { id: 'bird', icon: '🐦', name: 'Burung' },
+                { id: 'sun', icon: '☀️', name: 'Matahari' },
+                { id: 'rainbow', icon: '🌈', name: 'Pelangi' }
+            ];
+
+            function render() {
+                container.innerHTML = `
+                    <div class="text-center space-y-4 w-full max-w-md">
+                        <p class="text-xs font-bold text-slate-600 bg-emerald-50 p-2 rounded-xl border border-emerald-200">Sentuh semua objek ciptaan Allah Swt. di desa ini!</p>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            ${items.map(item => `
+                                <button onclick="touchLvl1('${item.id}')" class="p-3 bg-white rounded-2xl border-2 ${found.has(item.id) ? 'border-emerald-500 bg-emerald-50' : 'border-amber-200'} shadow btn-bounce flex flex-col items-center">
+                                    <span class="text-4xl">${item.icon}</span>
+                                    <span class="text-xs font-bold mt-1">${item.name}</span>
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            window.touchLvl1 = function(id) {
+                found.add(id);
+                playSound('success');
+                render();
+                if (found.size === items.length) {
+                    setTimeout(() => completeLevel(1, 3, "Hebat! Kamu telah mengenali seluruh ciptaan Allah Swt.!"), 400);
+                }
+            };
+            render();
+        }
+
+        function playLevel2(container) {
+            const scenarios = [
+                { icon: '🌈', q: 'Melihat pelangi indah menghiasi langit...' },
+                { icon: '🏔️', q: 'Melihat gunung yang sangat tinggi dan megah...' },
+                { icon: '🌊', q: 'Melihat lautan yang sangat luas...' }
+            ];
+            let idx = 0;
+
+            function render() {
+                const item = scenarios[idx];
+                container.innerHTML = `
+                    <div class="text-center space-y-4 max-w-md w-full">
+                        <div class="text-6xl animate-float">${item.icon}</div>
+                        <p class="text-xs font-bold text-slate-700">${item.q}</p>
+                        <p class="text-xs font-extrabold text-teal-700">Apa yang sebaiknya kita ucapkan?</p>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="ansLvl2(true)" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold p-3 rounded-2xl shadow border-b-4 border-emerald-700 btn-bounce text-xs">SUBHĀNALLĀH</button>
+                            <button onclick="ansLvl2(false)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold p-3 rounded-2xl shadow border-b-4 border-rose-700 btn-bounce text-xs">MĀSYĀ ALLĀH</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            window.ansLvl2 = function(isCorrect) {
+                if (isCorrect) {
+                    playSound('success');
+                    idx++;
+                    if (idx < scenarios.length) render();
+                    else completeLevel(2, 3, "Luar biasa! Kamu tahu kapan mengucapkan Subhānallāh!");
+                } else playSound('click');
+            };
+            render();
+        }
+
+        function playLevel3(container) {
+            const scenarios = [
+                { icon: '🌸', q: 'Melihat taman bunga mawar yang sangat indah...' },
+                { icon: '🏆', q: 'Melihat teman mendapat juara perlombaan...' },
+                { icon: '🎨', q: 'Melihat lukisan gambar teman yang sangat bagus...' }
+            ];
+            let idx = 0;
+
+            function render() {
+                const item = scenarios[idx];
+                container.innerHTML = `
+                    <div class="text-center space-y-4 max-w-md w-full">
+                        <div class="text-6xl animate-float">${item.icon}</div>
+                        <p class="text-xs font-bold text-slate-700">${item.q}</p>
+                        <p class="text-xs font-extrabold text-rose-700">Apa yang sebaiknya kita ucapkan?</p>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="ansLvl3(false)" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold p-3 rounded-2xl shadow border-b-4 border-emerald-700 btn-bounce text-xs">SUBHĀNALLĀH</button>
+                            <button onclick="ansLvl3(true)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold p-3 rounded-2xl shadow border-b-4 border-rose-700 btn-bounce text-xs">MĀSYĀ ALLĀH</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            window.ansLvl3 = function(isCorrect) {
+                if (isCorrect) {
+                    playSound('success');
+                    idx++;
+                    if (idx < scenarios.length) render();
+                    else completeLevel(3, 3, "Hebat! Kamu dapat mengenali keindahan dengan mengucapkan Māsyā Allāh!");
+                } else playSound('click');
+            };
+            render();
+        }
+
+        function playLevel4(container) {
+            const sit = [
+                { icon: '🌈', text: 'Melihat pelangi di langit', correct: 'sub' },
+                { icon: '🏆', text: 'Teman mendapat nilai 100', correct: 'masya' },
+                { icon: '🏔️', text: 'Melihat gunung yang tinggi', correct: 'sub' },
+                { icon: '🌺', text: 'Melihat bunga mekar indah', correct: 'masya' },
+                { icon: '⚡', text: 'Mendengar petir menggeledak', correct: 'sub' }
+            ];
+            let i = 0;
+
+            function render() {
+                const current = sit[i];
+                container.innerHTML = `
+                    <div class="text-center space-y-4 max-w-md w-full">
+                        <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">Soal ${i + 1} / ${sit.length}</span>
+                        <div class="text-5xl">${current.icon}</div>
+                        <p class="text-xs font-bold text-slate-800">${current.text}</p>
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <button onclick="ansLvl4('sub')" class="bg-teal-500 text-white font-bold p-3 rounded-2xl shadow border-b-4 border-teal-700 btn-bounce text-xs">SUBHĀNALLĀH</button>
+                            <button onclick="ansLvl4('masya')" class="bg-rose-500 text-white font-bold p-3 rounded-2xl shadow border-b-4 border-rose-700 btn-bounce text-xs">MĀSYĀ ALLĀH</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            window.ansLvl4 = function(ans) {
+                if (ans === sit[i].correct) playSound('success');
+                else playSound('click');
+                i++;
+                if (i < sit.length) render();
+                else completeLevel(4, 3, "Pilihan kalimatmu sangat tepat!");
+            };
+            render();
+        }
+
+        function playLevel5(container) {
+            const items = [
+                { name: 'Pelangi', icon: '🌈', target: 'sub' },
+                { name: 'Piala Juara', icon: '🏆', target: 'masya' },
+                { name: 'Gunung Tinggi', icon: '🏔️', target: 'sub' },
+                { name: 'Gambar Indah', icon: '🎨', target: 'masya' }
+            ];
+            let activeIdx = 0;
+
+            function render() {
+                if (activeIdx >= items.length) {
+                    completeLevel(5, 3, "Kamu telah berhasil mengelompokkan pulau kalimat!");
+                    return;
+                }
+                const current = items[activeIdx];
+                container.innerHTML = `
+                    <div class="text-center space-y-4 w-full max-w-md">
+                        <p class="text-xs font-bold text-slate-600">Pindahkan kartu ini ke pulau yang tepat!</p>
+                        <div class="bg-amber-50 p-4 rounded-2xl border-2 border-amber-300 inline-block shadow">
+                            <span class="text-4xl">${current.icon}</span>
+                            <p class="font-extrabold text-xs mt-1">${current.name}</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <button onclick="sortItem('sub')" class="bg-sky-500 hover:bg-sky-600 text-white font-extrabold p-4 rounded-3xl shadow border-b-4 border-sky-700 btn-bounce text-xs flex flex-col items-center">
+                                <span class="text-2xl">🕌</span>
+                                <span>PULAU SUBHĀNALLĀH</span>
+                            </button>
+                            <button onclick="sortItem('masya')" class="bg-pink-500 hover:bg-pink-600 text-white font-extrabold p-4 rounded-3xl shadow border-b-4 border-pink-700 btn-bounce text-xs flex flex-col items-center">
+                                <span class="text-2xl">🌺</span>
+                                <span>PULAU MĀSYĀ ALLĀH</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            window.sortItem = function(target) {
+                if (target === items[activeIdx].target) playSound('success');
+                else playSound('click');
+                activeIdx++;
+                render();
+            };
+            render();
+        }
+
+        function playLevel6(container) {
+            let height = 0;
+            const questions = [
+                { q: "Melihat bintang-bintang indah di malam hari...", opt: ["Subhānallāh", "Māsyā Allāh"], c: 0 },
+                { q: "Melihat adik menggambar istana yang megah...", opt: ["Subhānallāh", "Māsyā Allāh"], c: 1 },
+                { q: "Mendengar kilat dan petir yang keras...", opt: ["Subhānallāh", "Māsyā Allāh"], c: 0 }
+            ];
+            let qIdx = 0;
+
+            function render() {
+                if (qIdx >= questions.length) {
+                    completeLevel(6, 3, "Roket Akhlak telah berhasil meluncur tinggi ke angkasa!");
+                    return;
+                }
+                const q = questions[qIdx];
+                container.innerHTML = `
+                    <div class="text-center space-y-4 max-w-md w-full">
+                        <div class="bg-indigo-900 text-white p-3 rounded-2xl flex items-center justify-between border border-indigo-400">
+                            <span class="text-xs font-bold">Ketinggian Roket:</span>
+                            <span class="font-extrabold text-amber-400 text-xs">🚀 ${height} Meter</span>
+                        </div>
+                        <p class="text-xs font-bold text-slate-800">${q.q}</p>
+                        <div class="space-y-2">
+                            ${q.opt.map((o, idx) => `
+                                <button onclick="ansLvl6(${idx})" class="w-full bg-purple-600 text-white font-bold p-3 rounded-xl shadow border-b-4 border-purple-800 btn-bounce text-xs">${o}</button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            window.ansLvl6 = function(selected) {
+                if (selected === questions[qIdx].c) {
+                    playSound('rocket');
+                    height += 100;
+                } else playSound('click');
+                qIdx++;
+                render();
+            };
+            render();
+        }
+
+        function playLevel7(container) {
+            let hp = 100;
+            const bossQs = [
+                { q: "Ahmad melihat temannya juara 1 hafalan surah.", a: "Māsyā Allāh" },
+                { q: "Siti melihat lautan dan ombak yang sangat besar.", a: "Subhānallāh" }
+            ];
+            let bIdx = 0;
+
+            function render() {
+                if (hp <= 0 || bIdx >= bossQs.length) {
+                    completeLevel(7, 3, "🎉 MONSTER LUPA KALAH! Kamu telah menjadi PETUALANG AKHLAK!");
+                    return;
+                }
+                const q = bossQs[bIdx];
+                container.innerHTML = `
+                    <div class="text-center space-y-4 max-w-md w-full">
+                        <div class="space-y-1">
+                            <div class="text-5xl transition-all transform hover:scale-110">👾</div>
+                            <p class="font-extrabold text-xs text-rose-600">Monster Lupa (HP: ${hp}%)</p>
+                            <div class="w-full bg-slate-200 h-3 rounded-full overflow-hidden border">
+                                <div class="bg-rose-500 h-full transition-all" style="width: ${hp}%"></div>
+                            </div>
+                        </div>
+                        <p class="text-xs font-bold text-slate-700">${q.q}</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="ansBoss(true)" class="bg-emerald-500 text-white font-bold p-3 rounded-2xl shadow border-b-4 border-emerald-700 btn-bounce text-xs">${q.a}</button>
+                            <button onclick="ansBoss(false)" class="bg-slate-400 text-white font-bold p-3 rounded-2xl shadow border-b-4 border-slate-600 btn-bounce text-xs">Bukan Kalimat Ini</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            window.ansBoss = function(isCorrect) {
+                if (isCorrect) {
+                    playSound('success');
+                    hp -= 50;
+                } else playSound('click');
+                bIdx++;
+                render();
+            };
+            render();
+        }
+
+        function completeLevel(lvlId, starsEarned, message) {
+            playSound('success');
+            if (!gameState.completedLevels.includes(lvlId)) gameState.completedLevels.push(lvlId);
+            gameState.levelStars[lvlId] = Math.max(gameState.levelStars[lvlId] || 0, starsEarned);
+            gameState.stars += starsEarned;
+            gameState.gems += 5;
+            saveGameState();
+
+            if (typeof google !== 'undefined' && google.script && google.script.run) {
+                google.script.run.saveScoreToSpreadsheet({
+                    playerName: gameState.playerName,
+                    stars: gameState.stars,
+                    completedLevels: gameState.completedLevels.length
+                });
+            }
+
+            document.getElementById('gameplayArea').innerHTML = `
+                <div class="text-center space-y-3 max-w-md my-auto">
+                    <span class="text-5xl animate-bounce inline-block">🎉</span>
+                    <h3 class="text-xl font-black text-emerald-600">LEVEL SELESAI!</h3>
+                    <p class="text-xs font-bold text-slate-700">${message}</p>
+                    <div class="text-2xl font-black text-amber-400">⭐⭐⭐</div>
+                    <button onclick="navView('map')" class="bg-emerald-500 text-white font-extrabold px-5 py-2 rounded-xl shadow border-b-4 border-emerald-700 btn-bounce text-xs">🗺️ KEMBALI KE PETA</button>
+                </div>
+            `;
+        }
+
+        const EVAL_QUESTIONS = [
+            { q: "Melihat pelangi indah di langit, kita mengucapkan...", icon: "🌈", opts: ["Selamat Pagi", "Subhānallāh", "Terima Kasih"], correct: 1 },
+            { q: "Melihat teman mendapat juara 1 melukis, kita mengucapkan...", icon: "🏆", opts: ["Subhānallāh", "Māsyā Allāh", "Maafkan Saya"], correct: 1 },
+            { q: "Subhānallāh artinya adalah...", icon: "📖", opts: ["Mahasuci Allah", "Segala Puji bagi Allah", "Allah Maha Besar"], correct: 0 },
+            { q: "Māsyā Allāh artinya adalah...", icon: "✨", opts: ["Mahasuci Allah", "Apa yang dikehendaki Allah", "Dengan Nama Allah"], correct: 1 },
+            { q: "Siapa yang menciptakan langit dan bumi?", icon: "🌍", opts: ["Manusia", "Allah Swt.", "Malaikat"], correct: 1 }
+        ];
+
+        let evalIndex = 0;
+        let evalScore = 0;
+
+        function startEvaluation() {
+            playSound('click');
+            evalIndex = 0; evalScore = 0;
+            navView('eval');
+            renderEvalQuestion();
+        }
+
+        function renderEvalQuestion() {
+            const q = EVAL_QUESTIONS[evalIndex];
+            document.getElementById('evalCounter').innerText = `Soal ${evalIndex + 1} / ${EVAL_QUESTIONS.length}`;
+            document.getElementById('evalQuizBox').innerHTML = `
+                <div class="text-center bg-amber-50 p-4 rounded-2xl border border-amber-200">
+                    <span class="text-4xl">${q.icon}</span>
+                    <p class="font-extrabold text-xs mt-2">${q.q}</p>
+                </div>
+                <div class="space-y-2">
+                    ${q.opts.map((opt, i) => `
+                        <button onclick="ansEval(${i})" class="w-full text-left bg-white font-bold p-3 rounded-xl border text-xs btn-bounce flex items-center gap-2">
+                            <span class="bg-sky-100 text-sky-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-black">${String.fromCharCode(65 + i)}</span>
+                            <span>${opt}</span>
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function ansEval(idx) {
+            if (idx === EVAL_QUESTIONS[evalIndex].correct) evalScore += (100 / EVAL_QUESTIONS.length);
+            evalIndex++;
+            if (evalIndex < EVAL_QUESTIONS.length) {
+                renderEvalQuestion();
+            } else {
+                playSound('success');
+                try { confetti({ particleCount: 100, spread: 70 }); } catch (e) {}
+                gameState.evalScore = Math.round(evalScore);
+                saveGameState();
+                document.getElementById('resScore').innerText = `${gameState.evalScore} / 100`;
+                document.getElementById('resStars').innerText = `⭐ ${gameState.stars}`;
+                navView('result');
+            }
+        }
+
+        function renderAchievements() {
+            const container = document.getElementById('badgesContainer');
+            const badges = [
+                { title: 'Pahlawan Akhlak', desc: 'Selesaikan Level 1 & 2', unlocked: gameState.completedLevels.includes(2), icon: '🏅' },
+                { title: 'Sahabat Allah Swt.', desc: 'Selesaikan Level 3 & 4', unlocked: gameState.completedLevels.includes(4), icon: '🌈' },
+                { title: 'Petualang Hebat', desc: 'Selesaikan Seluruh Level', unlocked: gameState.completedLevels.length >= 7, icon: '⭐' },
+                { title: 'Anak Rajin Bersyukur', desc: 'Selesaikan Evaluasi Akhir', unlocked: gameState.evalScore !== null, icon: '🌸' }
+            ];
+
+            container.innerHTML = badges.map(b => `
+                <div class="bg-white p-3 rounded-2xl border flex items-center gap-3 ${b.unlocked ? 'border-amber-300' : 'opacity-50 grayscale'}">
+                    <span class="text-3xl">${b.icon}</span>
+                    <div>
+                        <h4 class="font-extrabold text-xs text-slate-800">${b.title}</h4>
+                        <p class="text-xs text-slate-500">${b.desc}</p>
+                        <span class="text-[10px] font-bold ${b.unlocked ? 'text-emerald-600' : 'text-slate-400'}">${b.unlocked ? '✓ Terbuka' : '🔒 Terkunci'}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderTeacherUI() {
+            document.getElementById('tStars').innerText = gameState.stars;
+            document.getElementById('tEval').innerText = gameState.evalScore !== null ? `${gameState.evalScore} / 100` : '-';
+            document.getElementById('tLevels').innerText = `${gameState.completedLevels.length} / 7`;
+        }
+
+        function openResetModal() {
+            document.getElementById('customModal').classList.remove('hidden');
+            document.getElementById('modalConfirmBtn').onclick = () => {
+                localStorage.removeItem('pai_petualangan_gas_v1');
+                gameState = { ...DEFAULT_STATE };
+                saveGameState();
+                closeModal();
+                navHome();
+            };
+        }
+
+        function closeModal() {
+            document.getElementById('customModal').classList.add('hidden');
+        }
+
+        window.onload = function() {
+            loadGameState();
+            navHome();
+        };
+    </script>
+</body>
+</html>
